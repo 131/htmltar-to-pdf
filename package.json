@@ -1,10 +1,10 @@
 {
   "name": "htmltar-to-pdf",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "convert html tar archives to pdf",
   "main": "lib/index.js",
   "scripts": {
-    "test" : "npm run eslint && npm run cover",
+    "test": "npm run eslint && npm run cover",
     "cover": "nyc --temp-directory coverage/.nyc_output --reporter text-summary --reporter html --reporter lcov  mocha",
     "coveralls": "npm install coveralls && node ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info",
     "mocha": "node node_modules/mocha/bin/_mocha",

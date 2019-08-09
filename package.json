@@ -20,11 +20,22 @@
   "optionalDependencies": {
     "phantomjs-win-x86": "^2.1.2"
   },
-  "author": "Francois Leurent <fleurent@ivsweb.com>",
+  "author": "Francois Leurent <131.js@cloudyks.org>",
   "license": "UNLICENSED",
   "dependencies": {
     "nyks": "^5.12.6",
     "phantomjs-win-x86": "^2.1.2",
     "tar-serve-http": "^1.0.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/131/htmltar-to-pdf.git"
+  },
+  "bugs": {
+    "url": "https://github.com/131/htmltar-to-pdf/issues"
+  },
+  "homepage": "https://github.com/131/htmltar-to-pdf#readme"
 }

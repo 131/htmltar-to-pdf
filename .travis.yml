@@ -1,9 +1,11 @@
+os: windows
 language: node_js
 node_js:
 - 8
 after_script:
 - npm run coveralls
 deploy:
+  skip_cleanup: true
   provider: npm
   email: 131.frodon@cloudyks.org
   api_key: $NPM_TOKEN

@@ -1,0 +1,30 @@
+{
+  "name": "htmltar-to-pdf",
+  "version": "0.9.0",
+  "description": "convert html tar archives to pdf",
+  "main": "lib/index.js",
+  "scripts": {
+    "cover": "nyc --temp-directory coverage/.nyc_output --reporter text-summary --reporter html --reporter lcov  mocha",
+    "mocha": "node node_modules/mocha/bin/_mocha",
+    "eslint": "eslint ."
+  },
+  "keywords": [
+    "phantomjs"
+  ],
+  "devDependencies": {
+    "eslint-plugin-ivs": "^1.3.0",
+    "expect.js": "^0.3.1",
+    "mocha": "^3.1.2",
+    "nyc": "^13.0.1"
+  },
+  "optionalDependencies": {
+    "phantomjs-win-x86": "^2.1.2"
+  },
+  "author": "Francois Leurent <fleurent@ivsweb.com>",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "nyks": "^5.12.6",
+    "phantomjs-win-x86": "^2.1.2",
+    "tar-serve-http": "^1.0.1"
+  }
+}

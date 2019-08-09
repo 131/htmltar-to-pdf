@@ -13,7 +13,9 @@ describe("Initial test suite", function () {
 
   it("should render HTML to PDF", async () => {
 
-    let output_path = await html2pdf(infile);
+    let output_path = await html2pdf(infile, {
+      "index" : "test.html"
+    });
     expect(output_path).to.be.a('string');
     expect(fs.existsSync(output_path)).to.be.ok();
 

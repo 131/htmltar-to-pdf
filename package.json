@@ -1,6 +1,6 @@
 {
   "name": "htmltar-to-pdf",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "convert html tar archives to pdf",
   "main": "lib/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "eslint": "eslint ."
   },
   "keywords": [
-    "phantomjs"
+    "puppeteer"
   ],
   "devDependencies": {
     "eslint-plugin-ivs": "^1.3.0",
@@ -20,13 +20,12 @@
     "nyc": "^13.0.1"
   },
   "optionalDependencies": {
-    "phantomjs-win-x86": "^2.1.2"
+    "puppeteer": "^1.19.0"
   },
   "author": "Francois Leurent <131.js@cloudyks.org>",
   "license": "UNLICENSED",
   "dependencies": {
     "nyks": "^5.12.6",
-    "phantomjs-win-x86": "^2.1.2",
     "tar-serve-http": "^1.0.1"
   },
   "directories": {

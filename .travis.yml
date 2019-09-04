@@ -4,6 +4,8 @@ node_js:
 - 8
 after_script:
 - npm run coveralls
+before_script:
+- npm install puppeteer
 deploy:
   skip_cleanup: true
   provider: npm

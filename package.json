@@ -19,7 +19,7 @@
     "mocha": "^3.1.2",
     "nyc": "^13.0.1"
   },
-  "optionalDependencies": {
+  "peerDependencies": {
     "puppeteer": "^1.19.0"
   },
   "author": "Francois Leurent <131.js@cloudyks.org>",

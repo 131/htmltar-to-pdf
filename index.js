@@ -38,6 +38,8 @@ var HTML2PDF = async function(tar_path, options) {
     format          : options.format
   });
 
+  await browser.close();
+
   server.close();
   route.close();
 

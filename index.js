@@ -45,6 +45,7 @@ var HTML2PDF = async function(tar_path, options) {
       await Promise.race([page.waitForSelector(options.waitForDom), timeout(options.waitForTimeout)]);
 
     if(options.waitForEvent) {
+      /* istanbul ignore next */
       await Promise.race([
         page.evaluate((options) => new Promise((resolve) => document.addEventListener(options.waitForEvent, resolve)), options),
         timeout(options.waitForTimeout)

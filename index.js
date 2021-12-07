@@ -6,11 +6,16 @@ const mountTar  = require('tar-serve-http');
 const puppeteer = require('puppeteer');
 
 const tmppath   = require('nyks/fs/tmppath');
+const timeout   = require('nyks/async/timeout');
 
 var HTML2PDF = async function(tar_path, options) {
+
   options = {
-    format : 'A4',
-    index  : 'index.html',
+    format         : 'A4',
+    index          : 'index.html',
+    waitForDom     : null,
+    waitForEvent   : null,
+    waitForTimeout : 5000,
     ...options
   };
 
@@ -24,26 +29,44 @@ var HTML2PDF = async function(tar_path, options) {
 
   let source_url  = `http://127.0.0.1:${port}/${options.index}`;
   let output_path = tmppath('pdf');
+
   let browser     = await puppeteer.launch({args : ['--no-sandbox', '--disable-setuid-sandbox']});
-  let page        = await browser.newPage();
 
-  page.on('error', function(err) {
-    console.log('an error occured, the page might have crashed !', err);
-  });
+  try {
+    let page        = await browser.newPage();
 
-  await page.goto(source_url);
-  await page.pdf({
-    path            : output_path,
-    printBackground : true,
-    format          : options.format
-  });
+    page.on('error', function(err) {
+      console.log('an error occured, the page might have crashed !', err);
+    });
 
-  await browser.close();
+    await page.goto(source_url);
 
-  server.close();
-  route.close();
+    if(options.waitForDom)
+      await Promise.race([page.waitForSelector(options.waitForDom), timeout(options.waitForTimeout)]);
 
-  return output_path;
+    if(options.waitForEvent) {
+      /* istanbul ignore next */
+      await Promise.race([
+        page.evaluate((options) => new Promise((resolve) => document.addEventListener(options.waitForEvent, resolve)), options),
+        timeout(options.waitForTimeout)
+      ]);
+    }
+
+    await page.pdf({
+      path            : output_path,
+      printBackground : true,
+      format          : options.format,
+      landscape       : !!(options.orientation == 'landscape')
+    });
+    return output_path;
+
+  } finally {
+    await browser.close();
+
+    server.close();
+    route.close();
+  }
+
 };
 
 module.exports = HTML2PDF;

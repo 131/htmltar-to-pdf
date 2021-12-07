@@ -11,7 +11,7 @@ describe("Initial test suite", function () {
 
   this.timeout(60 * 1000);
 
-  it("should render HTML to PDF", async () => {
+  it("should work with a dummy test", async () => {
 
     let output_path = await html2pdf(infile, {
       "index" : "test.html"
@@ -22,5 +22,36 @@ describe("Initial test suite", function () {
     fs.renameSync(output_path, output_path = `${output_path}.keep.pdf`);
     console.log("Pdf has been generated in %s", output_path);
   });
+
+
+
+  it("should wait for DOM", async () => {
+
+    let output_path = await html2pdf(infile, {
+      "index"    : "test.html",
+      waitForDom : "#spantrigger",
+
+    });
+    expect(output_path).to.be.a('string');
+    expect(fs.existsSync(output_path)).to.be.ok();
+
+    fs.renameSync(output_path, output_path = `${output_path}.keep.pdf`);
+    console.log("Pdf has been generated in %s", output_path);
+  });
+
+
+  it("should wait for Event", async () => {
+
+    let output_path = await html2pdf(infile, {
+      "index"      : "test.html",
+      waitForEvent : "PDFREADY",
+    });
+    expect(output_path).to.be.a('string');
+    expect(fs.existsSync(output_path)).to.be.ok();
+
+    fs.renameSync(output_path, output_path = `${output_path}.keep.pdf`);
+    console.log("Pdf has been generated in %s", output_path);
+  });
+
 
 });

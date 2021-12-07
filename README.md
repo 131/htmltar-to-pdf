@@ -28,13 +28,17 @@ console.log("Please find a fine PDF in", output_path);
 
 ```
   let opts = {
-    paperFormat : 'A4',
-    orientation : 'portrait',
-    dpi         : 72,
-    index       : 'index.html',
+    format         : 'A4',
+    orientation    : 'portrait || landscape',
+    dpi            : 72,
+    index          : 'index.html',
+    waitForDom     : true,
+    waitForEvent   : 'customPageEvent',
+    waitForTimeout : 5000 // timeout as ms
   };
 ```
 
 # Credits
 * [131 - auhor](https://github.com/131)
+* [kalmani](https://github.com/kalmani)
 * [ariya's phantomjs](https://github.com/ariya/phantomjs)

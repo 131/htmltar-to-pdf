@@ -1,6 +1,10 @@
 {
   "root": true,
+
   "extends": [
     "plugin:ivs/node"
-  ]
+  ],
+  "globals" : {
+    "document" : true
+  }
 }

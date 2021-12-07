@@ -1,6 +1,6 @@
 {
   "name": "htmltar-to-pdf",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "convert html tar archives to pdf",
   "main": "lib/index.js",
   "scripts": {

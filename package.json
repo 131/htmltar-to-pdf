@@ -6,7 +6,6 @@
   "scripts": {
     "test": "npm run eslint && npm run cover",
     "cover": "nyc --temp-directory coverage/.nyc_output --reporter text-summary --reporter html --reporter lcov  mocha",
-    "coveralls": "npm install coveralls && node ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info",
     "mocha": "node node_modules/mocha/bin/_mocha",
     "eslint": "eslint ."
   },
@@ -22,7 +21,7 @@
   "peerDependencies": {
     "puppeteer": "^1.19.0"
   },
-  "author": "Francois Leurent <131.js@cloudyks.org>",
+  "author": "Francois Leurent <131.code@leurent.email>",
   "license": "UNLICENSED",
   "dependencies": {
     "nyks": "^5.12.6",

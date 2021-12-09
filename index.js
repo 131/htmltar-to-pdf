@@ -29,7 +29,7 @@ var HTML2PDF = async function(source_path, options = {}) {
     server.listen(() => resolve(server.address().port));
   });
 
-  console.error('Server is ready and listening on port', port, options);
+  console.error('Server is ready and listening on port', port);
 
   let source_url  = `http://127.0.0.1:${port}/${options.index}`;
 
@@ -116,6 +116,7 @@ const paginator = async function(page, {headerTemplate, footerTemplate, pageBody
     }
   `;
 
+  /* istanbul ignore next */
   await page.evaluate(({paginatorStyle, pageBodyAnchor, headerTemplate, footerTemplate}) => {
 
     let n = (n, attrs = {}) => {

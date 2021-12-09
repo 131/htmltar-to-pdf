@@ -1,0 +1,42 @@
+html,body{
+  margin:0px;
+  padding:0px;
+}
+
+#container {
+  background-color:#F5CC70;
+  display:block;
+  width:100%;
+
+}
+
+.kimmy {
+  border:1px solid black;
+}
+.newpage {
+  page-break-after: always;
+}
+
+
+
+
+#page-header {
+  color:blue;
+  font-weight:bold;
+  background-color:white!important;
+  height:2cm;
+}
+
+#page-footer {
+  font-weight:bold;
+  background-color:white!important;
+  height:2cm;
+}
+
+
+
+@media print {
+  @page {
+
+  }
+}

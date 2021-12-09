@@ -25,7 +25,7 @@
   "license": "UNLICENSED",
   "dependencies": {
     "nyks": "^5.12.6",
-    "tar-serve-http": "^1.0.3"
+    "tar-serve-http": "^1.2.0"
   },
   "directories": {
     "test": "test"

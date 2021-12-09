@@ -32,9 +32,15 @@ console.log("Please find a fine PDF in", output_path);
     orientation    : 'portrait || landscape',
     dpi            : 72,
     index          : 'index.html',
+
     waitForDom     : true,
     waitForEvent   : 'customPageEvent',
     waitForTimeout : 5000 // timeout as ms
+
+     //configure one will set up #page-footer #page-header
+    pageBodyAnchor : null,
+    footerFile     : null,
+    headerFile     : null,
   };
 ```
 

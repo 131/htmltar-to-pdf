@@ -11,10 +11,25 @@ describe("Initial test suite", function () {
   this.timeout(60 * 1000);
 
   const source  = __dirname + '/html_moving_rect.tar';
+
+  it("should work with a dummy test (png)", async () => {
+    let output_path = source + ".png";
+
+    let body = await html2pdf(source, "png", {
+      "index" : "test.html"
+    });
+    fs.writeFileSync(output_path, body);
+
+    expect(fs.existsSync(output_path)).to.be.ok();
+    console.log("Pdf has been generated in %s", output_path);
+  });
+
+
+
   it("should work with a dummy test", async () => {
     let output_path = source + ".pdf";
 
-    let body = await html2pdf(source, {
+    let body = await html2pdf(source, "pdf", {
       "index" : "test.html"
     });
     fs.writeFileSync(output_path, body);
@@ -28,7 +43,7 @@ describe("Initial test suite", function () {
   it("should wait for DOM", async () => {
     let output_path = source + ".waitdom.pdf";
 
-    let body = await html2pdf(source, {
+    let body = await html2pdf(source, "pdf", {
       "index"    : "test.html",
       waitForDom : "#spantrigger",
     });
@@ -43,7 +58,7 @@ describe("Initial test suite", function () {
   it("should wait for Event", async () => {
     let output_path = source + ".event.pdf";
 
-    let body = await html2pdf(source, {
+    let body = await html2pdf(source, "pdf", {
       "index"      : "test.html",
       waitForEvent : "PDFREADY",
     });
@@ -59,7 +74,7 @@ describe("Initial test suite", function () {
 
     let output_path = source + ".pdf";
 
-    let body = await html2pdf(source, {
+    let body = await html2pdf(source, "pdf", {
       orientation : "portrait",
       footerFile : "footer.html",
       headerFile : "header.html",
@@ -71,8 +86,6 @@ describe("Initial test suite", function () {
 
     console.log("Pdf has been generated in %s", output_path);
   });
-
-
 
 
 

@@ -7,10 +7,7 @@ const puppeteer = require('puppeteer');
 
 const timeout   = require('nyks/async/timeout');
 
-var HTML2PDF = async function(source_path, options = {}) {
-
-  options = {
-    format         : 'A4',
+const defaults = {
     index          : 'index.html',
     waitForDom     : null,
     waitForEvent   : null,
@@ -19,6 +16,23 @@ var HTML2PDF = async function(source_path, options = {}) {
     pageBodyAnchor : null, //set to body
     footerFile     : undefined,
     headerFile     : undefined,
+};
+
+const pdf_default = {
+  format : "A4"
+};
+const img_default = {
+  format : "png",
+  width  : 800,
+  height : 600,
+};
+
+
+var html2capture = async function(source_path, format = "pdf", options = {}) {
+
+  options = {
+    ...defaults,
+    ...( format == "pdf" ? pdf_default : img_default),
     ...options
   };
 
@@ -38,6 +52,15 @@ var HTML2PDF = async function(source_path, options = {}) {
   try {
     let page        = await browser.newPage();
 
+    if(format == "png") {
+      await page.setViewport({
+        width : options.width,
+        height : options.height,
+        deviceScaleFactor: 1,
+        isLandScape   : !!(options.orientation == 'landscape'),
+      });
+    }
+
     page.on('error', function(err) {
       console.log('an error occured, the page might have crashed !', err);
     });
@@ -54,12 +77,6 @@ var HTML2PDF = async function(source_path, options = {}) {
         timeout(options.waitForTimeout)
       ]);
     }
-
-    let pdfOpts = {
-      printBackground : true,
-      format          : options.format,
-      landscape       : !!(options.orientation == 'landscape'),
-    };
 
 
     /*
@@ -82,8 +99,20 @@ var HTML2PDF = async function(source_path, options = {}) {
         footerTemplate  = String(await source.retrieve(options.footerFile));
       await paginator(page, {headerTemplate, footerTemplate, pageBodyAnchor});
     }
-
-    return await page.pdf(pdfOpts);
+    if(format == "pdf") {
+      let pdfOpts = {
+        printBackground : true,
+        format          : options.format,
+        landscape       : !!(options.orientation == 'landscape'),
+      };
+      return await page.pdf(pdfOpts);
+    }
+    if(format == "png") {
+      let pngOpts = {
+        type  : format,
+      };
+      return await page.screenshot(pngOpts);
+    }
 
   } finally {
     await browser.close();
@@ -170,4 +199,4 @@ const paginator = async function(page, {headerTemplate, footerTemplate, pageBody
 
 
 
-module.exports = HTML2PDF;
+module.exports = html2capture;

@@ -7,7 +7,7 @@
 
 # Motivation
 
-[htmltar-to-pdf](https://github.com/131/htmltar-to-pdf) is a wrapper around phantomjs that convert a HTML payload (in a tarball) as a PDF file.
+[htmltar-to-pdf](https://github.com/131/htmltar-to-pdf) is a wrapper around phantomjs that convert a HTML payload (in a tarball) as a PDF (or png) file.
 
 Using a simple tar as input makes the whole API simple & stable.
 
@@ -17,7 +17,7 @@ Using a simple tar as input makes the whole API simple & stable.
 const html2pdf = require('htmltar-to-pdf');
 const infile  = '/some/path/to/a/file.tar';
 
-let output_path = await html2pdf(infile); //will capture (index.html in tar file)
+let output_path = await html2pdf(infile, [format = "pdf|png", [options ]]); //will capture (index.html in tar file)
 
 
 //you wont make it any simplier...

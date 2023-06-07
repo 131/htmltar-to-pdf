@@ -8,14 +8,14 @@ const puppeteer = require('puppeteer');
 const timeout   = require('nyks/async/timeout');
 
 const defaults = {
-    index          : 'index.html',
-    waitForDom     : null,
-    waitForEvent   : null,
-    waitForTimeout : 5000,
+  index          : 'index.html',
+  waitForDom     : null,
+  waitForEvent   : null,
+  waitForTimeout : 5000,
 
-    pageBodyAnchor : null, //set to body
-    footerFile     : undefined,
-    headerFile     : undefined,
+  pageBodyAnchor : null, //set to body
+  footerFile     : undefined,
+  headerFile     : undefined,
 };
 
 const pdf_default = {
@@ -32,7 +32,7 @@ var html2capture = async function(source_path, format = "pdf", options = {}) {
 
   options = {
     ...defaults,
-    ...( format == "pdf" ? pdf_default : img_default),
+    ...(format == "pdf" ? pdf_default : img_default),
     ...options
   };
 
@@ -56,7 +56,7 @@ var html2capture = async function(source_path, format = "pdf", options = {}) {
       await page.setViewport({
         width : options.width,
         height : options.height,
-        deviceScaleFactor: 1,
+        deviceScaleFactor : 1,
         isLandScape   : !!(options.orientation == 'landscape'),
       });
     }

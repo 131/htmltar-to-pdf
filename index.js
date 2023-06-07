@@ -79,7 +79,6 @@ var html2capture = async function(source_path, format = "pdf", options = {}) {
       ]);
     }
 
-
     /*
     page.on('console', (msg) => {
       for (let i = 0; i < msg.args().length; ++i)
@@ -111,6 +110,7 @@ var html2capture = async function(source_path, format = "pdf", options = {}) {
     if(format == "png") {
       let pngOpts = {
         type  : format,
+        omitBackground : options.omitBackground
       };
       return await page.screenshot(pngOpts);
     }

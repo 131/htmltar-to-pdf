@@ -2,7 +2,7 @@
   "name": "htmltar-to-pdf",
   "version": "2.0.2",
   "description": "convert html tar archives to pdf",
-  "main": "lib/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "npm run eslint && npm run cover",
     "cover": "nyc --temp-directory coverage/.nyc_output --reporter text-summary --reporter html --reporter lcov  mocha",

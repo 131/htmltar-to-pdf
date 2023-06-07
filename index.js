@@ -25,6 +25,7 @@ const img_default = {
   format : "png",
   width  : 800,
   height : 600,
+  omitBackground : true,
 };
 
 
